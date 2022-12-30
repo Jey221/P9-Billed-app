@@ -42,7 +42,7 @@ export default class Login {
     const user = {
       type: "Admin",
       email: e.target.querySelector(`input[data-testid="admin-email-input"]`).value,/**modification pour accès administrateur */
-      password: e.target.querySelector(`input[data-testid="admin-password-input"]`).value,
+      password: e.target.querySelector(`input[data-testid="admin-password-input"]`).value,/**modification pour accès administrateur */
       status: "connected"
     }
     this.localStorage.setItem("user", JSON.stringify(user))

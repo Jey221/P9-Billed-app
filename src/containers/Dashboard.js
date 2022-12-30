@@ -96,6 +96,7 @@ export default class {
       $('.dashboard-right-container div').html(DashboardFormUI(bill))
       $('.vertical-navbar').css({ height: '150vh' })
       this.counter ++
+      console.log(this.counter);
     } else {
       $(`#open-bill${bill.id}`).css({ background: '#0D5AE5' })
 
