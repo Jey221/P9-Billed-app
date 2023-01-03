@@ -20,9 +20,9 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  const orderData = [...data]
+  const orderData = data?.length > 0 ? [...data] : null
   const antiChrono = (a, b) => ((a.date < b.date) ? 1 : -1)
-  orderData.sort(antiChrono);
+  orderData?.sort(antiChrono);
   return (data && data.length) ? orderData.map(bill => row(bill)).join("") : ""
 }
 
