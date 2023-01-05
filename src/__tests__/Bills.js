@@ -106,27 +106,38 @@ describe("Given I am connected as an employee", () => {
     */
     describe("When I click on the eye icon", () => {
       test("The modal should appear", async () => {// test pour vérification de l'ouverture de l'aperçu de la note de frais
-          Object.defineProperty(window, 'localStorage', {value: localStorageMock})
-          window.localStorage.setItem('user', JSON.stringify({
-              type: 'Employee'
-          }))
-          const onNavigate = (pathname) => {
-            document.body.innerHTML = ROUTES({pathname})
-          }
-          const billsPage = new Bills({document, onNavigate, store: null, bills: bills, localStorage: window.localStorage})
-          document.body.innerHTML = BillsUI({data: {bills}})
-          $.fn.modal = jest.fn();// mise en place d'un mock pour la modal
-          const firstEyeIcon = getAllByTestId(document.body, "btn-new-bill")[0];
-          const handleClickIconEye = jest.fn(
-              billsPage.handleClickIconEye(firstEyeIcon)
-          );
-          firstEyeIcon.addEventListener("click", handleClickIconEye);
-          userEvent.click(firstEyeIcon);// action du click
-          expect(handleClickIconEye).toHaveBeenCalled();
+        Object.defineProperty(window, 'localStorage', {value: localStorageMock})
+        window.localStorage.setItem('user', JSON.stringify({
+          type: 'Employee'
+        }))
+        const onNavigate = (pathname) => {
+          document.body.innerHTML = ROUTES({pathname})
+        }
+        const billsPage = new Bills({document, onNavigate, store: null, bills: bills, localStorage: window.localStorage})
+        document.body.innerHTML = BillsUI({data: {bills}})
+        $.fn.modal = jest.fn();// mise en place d'un mock pour la modal
+        const firstEyeIcon = getAllByTestId(document.body, "btn-new-bill")[0];
+        const handleClickIconEye = jest.fn(
+          billsPage.handleClickIconEye(firstEyeIcon)
+        );
+        firstEyeIcon.addEventListener("click", handleClickIconEye);
+        userEvent.click(firstEyeIcon);// action du click
+        expect(handleClickIconEye).toHaveBeenCalled();
 
-          expect(screen.getByText('Justificatif')).toBeTruthy()
-          });
-  });
+        expect(screen.getByText('Justificatif')).toBeTruthy()
+      });
+    });
+    // test d'intégration API GET BILL
+    describe('When I navigate to Bills page', () => {
+      describe('When we call API', () => {
+        const store = mockedBills;
+        test('fetches bills from an API', async () => {
+          // Vérifie que le call API renvoie bien toutes les factures
+          const bills = await store.bills().list()
+          expect(bills.length).toBe(4);
+        })
+      })
+    })
   })
 })
 
