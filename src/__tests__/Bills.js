@@ -127,7 +127,7 @@ describe("Given I am connected as an employee", () => {
         expect(screen.getByText('Justificatif')).toBeTruthy()
       });
     });
-    // test d'intégration API GET BILL
+    // test d'intégration GET BILL
     describe('When I navigate to Bills page', () => {
       describe('When we call API', () => {
         const store = mockedBills;
