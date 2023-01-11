@@ -82,28 +82,6 @@ describe("Given I am connected as an employee", () => {
         expect(screen.getByTestId("form-new-bill")).toBeTruthy()
       })
     })
-    /*
-    describe('When I click on the eye icon', () => { // test pour vérification de l'ouverture de l'aperçu de la note de frais
-      test('The modal should appear', async () => {
-        Object.defineProperty(window, 'localStorage', { value: localStorageMock })
-        window.localStorage.setItem('user', JSON.stringify({
-          type: 'Employee'
-        }))
-        const onNavigate = (pathname) => {
-          document.body.innerHTML = ROUTES({ pathname })
-        }
-        const billsPage = new Bills({document, onNavigate, store: null, bills: bills, localStorage: window.localStorage})
-        document.body.innerHTML = BillsUI({data: {bills}})
-        $.fn.modal = jest.fn() // mise en place d'un mock pour la modal
-        const firstEyeIcon = screen.getByTestId('icon-eye');
-        const handleClickIconEye = jest.fn(billsPage.handleClickIconEye(firstEyeIcon));
-        firstEyeIcon.addEventListener("click", handleClickIconEye)// simulation de l'evenement click
-        userEvent.click(firstEyeIcon)
-        expect(handleClickIconEye).toHaveBeenCalled()
-        expect(screen.getByText('Justificatif')).toBeTruthy()
-      })
-    })
-    */
     describe("When I click on the eye icon", () => {
       test("The modal should appear", async () => {// test pour vérification de l'ouverture de l'aperçu de la note de frais
         Object.defineProperty(window, 'localStorage', {value: localStorageMock})

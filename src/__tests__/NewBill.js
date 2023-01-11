@@ -225,22 +225,3 @@ describe("Given I am a user connected as Employee", () => {
   })
 })
 
-/* 
-describe('When I uploaded a file with a wrong extension', () => {
-  test("Then I can't select upload a non image file", () => {
-    document.body.innerHTML = NewBillUI()
-    const store = null
-    const onNavigate =(pathname) => { document.body.innerHTML = pathname }
-    const newBill = new NewBill({ document, onNavigate, store, localStorage: window.localStorage })
-    const handleChangeFile = jest.fn(newBill.handleChangeFile)
-    const inputFile = screen.getByTestId('file')
-    expect(inputFile).toBeTruthy()
-    inputFile.addEventListener('change', handleChangeFile)
-    fireEvent.change(inputFile, {target: { files: [new File(['file.pdf'], 'file.pdf', {type: 'file/pdf'})] }})
-    expect(handleChangeFile).toHaveBeenCalled()
-    expect(inputFile.files[0].name).not.toBe('file.jpg')
-    jest.spyOn(window, 'alert').mockImplementation(() => { })
-    expect(window.alert).toHaveBeenCalled()
-  })
-})
- */
