@@ -96,7 +96,6 @@ export default class {
       $('.dashboard-right-container div').html(DashboardFormUI(bill))
       $('.vertical-navbar').css({ height: '150vh' })
       this.counter ++
-      console.log(this.counter);
     } else {
       $(`#open-bill${bill.id}`).css({ background: '#0D5AE5' })
 
@@ -138,7 +137,7 @@ export default class {
     if (this.counter % 2 === 0) {
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(0deg)'})
       $(`#status-bills-container${this.index}`)
-        .html(cards(filtred))
+        .html(cards(filtred)) // mise en place de ma variable filtred de remplacement pour bug ouverture des tickets
       this.counter ++
     } else {
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(90deg)'})
@@ -147,7 +146,7 @@ export default class {
       this.counter ++
     }
 
-    filtred.forEach(bill => {
+    filtred.forEach(bill => { // mise en place de ma variable filtred de remplacement pour bug ouverture des tickets
       $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
     })
 
